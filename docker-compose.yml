@@ -1,0 +1,59 @@
+version: '2'
+
+services:
+  mule-server:
+    image: soporteacqua/mule-server:1.0.0
+    container_name: mule-server
+    depends_on:
+     - graphite
+     - swagger-server
+    ports:
+     - "8083:8083"
+     - "61616:61616"
+     - "8161:8161"
+    volumes:
+     - /tmp/docker/mule-server/logs:/opt/mule/mule-standalone-390/logs
+     - /tmp/docker/mule-server/apps:/opt/mule/mule-standalone-390/apps
+    links:
+     - swagger-server:swagger-server
+     - graphite:graphite
+    user: root
+    networks:
+      zabbixbr:
+        ipv4_address: 172.25.0.5
+    
+  swagger-server:
+    image: soporteacqua/swagger-server:1.0.0
+    container_name: swagger-server
+    ports:
+     - "8085:8085"
+    volumes:
+     - /tmp/docker/swaggerserver/logs:/var/swaggerserver/logs
+    user: root
+    networks:
+      zabbixbr:
+        ipv4_address: 172.25.0.4
+    restart: always 
+    
+  graphite:
+    image: kamon/grafana_graphite
+    ports:
+      - "2003:2003"
+      - "2004:2004"
+      - "8080:80"
+      - "8081:81"
+      - "8125:8125"
+      - "8126:8126"
+    user: root
+    networks:
+      zabbixbr:
+        ipv4_address: 172.25.0.3
+    restart: always
+    
+networks:
+  zabbixbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.25.0.0/16
+         gateway: 172.25.0.1
