@@ -19,7 +19,7 @@ services:
      - graphite:graphite
     user: root
     networks:
-      zabbixbr:
+      integradornet:
         ipv4_address: 172.25.0.5
     
   swagger-server:
@@ -31,7 +31,7 @@ services:
      - /tmp/docker/swaggerserver/logs:/var/swaggerserver/logs
     user: root
     networks:
-      zabbixbr:
+      integradornet:
         ipv4_address: 172.25.0.4
     restart: always 
     
@@ -46,12 +46,12 @@ services:
       - "8126:8126"
     user: root
     networks:
-      zabbixbr:
+      integradornet:
         ipv4_address: 172.25.0.3
     restart: always
     
 networks:
-  zabbixbr:
+  integradornet:
     driver: bridge
     ipam:
      config:
