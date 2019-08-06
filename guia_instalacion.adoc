@@ -184,23 +184,31 @@ Esto es requerido pues Shopify envía las notificaciones y para ello requiere un
 
 NGROK es producto es un producto libre con algunas limitaciones. Se pueden extender estas limitaciones cambiando a un plan pago. Para más detalle visitar el sitio: https://ngrok.com/pricing
 
+Para instalar ingresar aquí:
+
+https://ngrok.com/download
+
+image:extracted-media/media/image31.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLc338883.PNG,width=392,height=309]
+
 Para obtener una clave libre, ingresar a
 
 https://dashboard.ngrok.com/get-started
 
-image:extracted-media/media/image31.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML10b5968f.PNG,width=244,height=239]
+image:extracted-media/media/image32.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML10b5968f.PNG,width=244,height=239]
 
 Es recomendable utilizar una cuenta de Gmail.
 
-image:extracted-media/media/image32.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML10e35afd.PNG,width=624,height=259]
+image:extracted-media/media/image33.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML10e35afd.PNG,width=624,height=259]
 
-image:extracted-media/media/image33.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa522b53.PNG,width=624,height=265]
+image:extracted-media/media/image34.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa522b53.PNG,width=624,height=265]
 
-image:extracted-media/media/image34.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa52e29d.PNG,width=624,height=127]
+Una vez instalado ejecutar la línea de comando de Windows como Administrador.
 
-image:extracted-media/media/image35.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa53d019.PNG,width=624,height=202]
+image:extracted-media/media/image35.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa52e29d.PNG,width=624,height=127]
 
-image:extracted-media/media/image36.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa546852.PNG,width=624,height=295]
+image:extracted-media/media/image36.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa53d019.PNG,width=624,height=202]
+
+image:extracted-media/media/image37.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa546852.PNG,width=624,height=295]
 
 La dirección *439d8576.ngrok.io* es la que se debe configurar en el servicio
 
@@ -211,21 +219,21 @@ Abrir la línea de comandos y ejecutar lo siguente:
 
 git clone https://github.com/AcquaNet/GuiaInstaladorIntegrador.git
 
-image:extracted-media/media/image37.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa131a8c.PNG,width=624,height=203]
+image:extracted-media/media/image38.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa131a8c.PNG,width=624,height=203]
 
 Ingresar a la carpeta descargada
 
-image:extracted-media/media/image38.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa148dc3.PNG,width=353,height=332]
+image:extracted-media/media/image39.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa148dc3.PNG,width=353,height=332]
 
 Editar archivo *.env* y cambiar los parámetros
 
-image:extracted-media/media/image39.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb2ff8f0.PNG,width=594,height=226]
+image:extracted-media/media/image40.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb2ff8f0.PNG,width=594,height=226]
 
-image:extracted-media/media/image40.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3a32ad.PNG,width=427,height=120]
+image:extracted-media/media/image41.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3a32ad.PNG,width=427,height=120]
 
 Ingresar valores enviados por mail.
 
-image:extracted-media/media/image41.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3167f2.PNG,width=624,height=202]
+image:extracted-media/media/image42.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3167f2.PNG,width=624,height=202]
 
 En caso que se desee utilizar otra cuenta SMTP debe cambiarse estos valores.
 
@@ -240,7 +248,7 @@ EMAIL
 |dragon_shopify_smtp_pass |Soporte2019!
 |===
 
-image:extracted-media/media/image42.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb31f954.PNG,width=624,height=222]
+image:extracted-media/media/image43.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb31f954.PNG,width=624,height=222]
 
 DRAGON
 
@@ -251,7 +259,7 @@ DRAGON
 |Dragon_Conf_Cliente a|
 Codigo que se obtiene de la confirmación de Cliente REST API
 
-image:extracted-media/media/image43.png[image,width=217,height=148]
+image:extracted-media/media/image44.png[image,width=217,height=148]
 
 |Dragon_Clave_Privada_Conf_Cliente |Clave privada del Cliente REST API
 |Dragon_User |Usuario de Dragon
@@ -268,9 +276,9 @@ Como determinar la dirección *Dragon_URL_Base*.
 
 La dirección IP debe tomar la dirección IPV4 donde está corriendo el servicio y el puerto se puede obtener escaneando el QR.
 
-image:extracted-media/media/image44.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLab9b492.PNG,width=624,height=337]
+image:extracted-media/media/image45.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLab9b492.PNG,width=624,height=337]
 
-image:extracted-media/media/image45.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb335fab.PNG,width=624,height=273]
+image:extracted-media/media/image46.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb335fab.PNG,width=624,height=273]
 
 [cols=",",]
 |===
@@ -294,11 +302,11 @@ Dentro de la carpeta GuiaInstaladorIntegrador debe ejecutarse el siguiente coman
 
 docker-compose up --no-start
 
-image:extracted-media/media/image46.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b0e86.PNG,width=624,height=184]
+image:extracted-media/media/image47.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b0e86.PNG,width=624,height=184]
 
 docker-compose start
 
-image:extracted-media/media/image47.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b89e0.PNG,width=624,height=298]
+image:extracted-media/media/image48.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b89e0.PNG,width=624,height=298]
 
 == Finalizar los Servicios en modo controlado.
 
@@ -306,7 +314,7 @@ Como finalizar los servicios en modo controlado.
 
 docker exec -it mule-server /opt/mule/mule-standalone-3.9.0/bin/mule stop
 
-image:extracted-media/media/image48.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa5be8ea.PNG,width=624,height=79]
+image:extracted-media/media/image49.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa5be8ea.PNG,width=624,height=79]
 
 docker-compose stop
 
@@ -319,7 +327,7 @@ Ingresar al siguiente Link
 
 http://192.168.99.100:8161/
 
-image:extracted-media/media/image49.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbde69bd.PNG,width=407,height=264]
+image:extracted-media/media/image50.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbde69bd.PNG,width=407,height=264]
 
 Se puede ingresar a ActiveMQ usando usuario y password ADMIN.
 
@@ -327,9 +335,9 @@ Se puede ingresar a ActiveMQ usando usuario y password ADMIN.
 
 https://192.168.99.100:8083/console/
 
-image:extracted-media/media/image50.png[image,width=355,height=250]
+image:extracted-media/media/image51.png[image,width=355,height=250]
 
-image:extracted-media/media/image51.png[image,width=540,height=381]
+image:extracted-media/media/image52.png[image,width=540,height=381]
 
 Las credenciales son las siguientes:
 
@@ -337,4 +345,4 @@ Las credenciales son las siguientes:
 
 *Password* 8FAc58d7D71944C098CE95528e8948A3
 
-image:extracted-media/media/image52.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbe30e27.PNG,width=403,height=283]
+image:extracted-media/media/image53.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbe30e27.PNG,width=403,height=283]
