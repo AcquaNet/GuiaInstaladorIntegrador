@@ -1,0 +1,1 @@
+pandoc --from=docx --to=asciidoc --wrap=none --atx-headers --extract-media=extracted-media INSTALACION_SISTEMA_DE_INTEGRACION.docx > guia_instalacion.adoc
