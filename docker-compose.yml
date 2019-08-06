@@ -3,6 +3,29 @@ version: '2'
 services:
   mule-server:
     image: soporteacqua/mule-server:1.0.0
+    environment:
+      dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
+      dragon_shopify_smtp_port: ${dragon_shopify_smtp_port}
+      dragon_shopify_smtp_user: ${dragon_shopify_smtp_user}
+      dragon_shopify_smtp_pass: ${dragon_shopify_smtp_pass}
+      dragon_shopify_smtp_email_from: ${dragon_shopify_smtp_email_from}
+      dragon_shopify_smtp_email_to: ${dragon_shopify_smtp_email_to} 
+      dragon_shopify_smtp_email_errorSubject: ${dragon_shopify_smtp_email_errorSubject}
+      Dragon_URL_Base: ${Dragon_URL_Base}
+      Dragon_Conf_Cliente: ${Dragon_Conf_Cliente}
+      Dragon_Clave_Privada_Conf_Cliente: ${Dragon_Clave_Privada_Conf_Cliente}
+      Dragon_User: ${Dragon_User}
+      Dragon_Password: ${Dragon_Password}
+      Dragon_Lista_De_Precios: ${Dragon_Lista_De_Precios}
+      Dragon_FechaUltimaActualizacion: ${Dragon_FechaUltimaActualizacion}
+      Shopify_API_Host: ${Shopify_API_Host}
+      Shopify_API_Port: ${Shopify_API_Port}
+      Shopify_API_BasePath: ${Shopify_API_BasePath}  
+      Shopify_API_Key: ${Shopify_API_Key}   
+      Shopify_API_Password: ${Shopify_API_Password}   
+      Shopify_Webhooks_url: ${Shopify_Webhooks_url}   
+      Shopify_Webhooks_topics: ${Shopify_Webhooks_topics} 
+      cron_status: ${cron_status}
     container_name: mule-server
     depends_on:
      - graphite
@@ -24,6 +47,10 @@ services:
     
   swagger-server:
     image: soporteacqua/swagger-server:1.0.0
+    environment:
+      SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
+      SWAGGER_SERVER_LICENCIA_VTO: ${SWAGGER_SERVER_LICENCIA_VTO}  
+      SWAGGER_SERVER_LICENCE_KEY: ${SWAGGER_SERVER_LICENCE_KEY}
     container_name: swagger-server
     ports:
      - "8085:8085"
