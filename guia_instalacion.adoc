@@ -18,7 +18,7 @@ link:#configurar-dragonfish[Configurar DragonFish 8]
 
 link:#instalar-git-windows[Instalar GIT Windows 10]
 
-link:#instalar-docker[Instalar Docker 10]
+link:#_Toc16009137[Instalar Docker 10]
 
 link:#crear-una-cuenta-gmail-para-recibir-las-notificaciones.[Crear una cuenta GMAIL para recibir las notificaciones. 12]
 
@@ -134,6 +134,8 @@ https://gitforwindows.org/
 
 image:extracted-media/media/image20.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML691a344.PNG,width=624,height=332]
 
+[#_Toc16009137 .anchor]##
+
 == Instalar Docker
 
 El sistema de integración está montado sobre tecnología Docker
@@ -142,11 +144,11 @@ Instalar Docker Comunity Edition desde el siguiente link:
 
 https://docs.docker.com/toolbox/overview/
 
-image:extracted-media/media/image21.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLabf9dd1.PNG,width=624,height=189]
+image:extracted-media/media/image21.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLc5838b9.PNG,width=264,height=610]
 
-image:extracted-media/media/image22.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLac129ef.PNG,width=624,height=196]
+image:extracted-media/media/image22.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLc59c3be.PNG,width=624,height=447]
 
-image:extracted-media/media/image23.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLac18bb7.PNG,width=624,height=207]
+image:extracted-media/media/image23.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLc5a8122.PNG,width=624,height=426]
 
 == Crear una cuenta GMAIL para recibir las notificaciones.
 
