@@ -300,15 +300,29 @@ image:extracted-media/media/image46.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHT
 
 == Instalar Servicio de Integración DragonFish/Shopify
 
-Dentro de la carpeta GuiaInstaladorIntegrador debe ejecutarse el siguiente comando:
+Ingresar a la terminal *Docker Quickstart Terminal*
+
+image:extracted-media/media/image47.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML1d9974.PNG,width=624,height=356]
+
+Ingresar a la línea de comandos de Windows
+
+image:extracted-media/media/image48.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML25d3c6.PNG,width=232,height=129]
+
+Ingresar a la de la carpeta donde se desacargó la GuiaInstaladorIntegrador
+
+image:extracted-media/media/image49.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTML270448.PNG,width=450,height=179]
+
+Luego ejecutar el siguiente comando:
 
 docker-compose up --no-start
 
-image:extracted-media/media/image47.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b0e86.PNG,width=624,height=184]
+image:extracted-media/media/image50.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b0e86.PNG,width=624,height=184]
+
+Iniciar luego los servicios
 
 docker-compose start
 
-image:extracted-media/media/image48.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b89e0.PNG,width=624,height=298]
+image:extracted-media/media/image51.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLb3b89e0.PNG,width=624,height=298]
 
 == Finalizar los Servicios en modo controlado.
 
@@ -316,7 +330,7 @@ Como finalizar los servicios en modo controlado.
 
 docker exec -it mule-server /opt/mule/mule-standalone-3.9.0/bin/mule stop
 
-image:extracted-media/media/image49.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa5be8ea.PNG,width=624,height=79]
+image:extracted-media/media/image52.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLa5be8ea.PNG,width=624,height=79]
 
 docker-compose stop
 
@@ -329,7 +343,7 @@ Ingresar al siguiente Link
 
 http://192.168.99.100:8161/
 
-image:extracted-media/media/image50.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbde69bd.PNG,width=407,height=264]
+image:extracted-media/media/image53.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbde69bd.PNG,width=407,height=264]
 
 Se puede ingresar a ActiveMQ usando usuario y password ADMIN.
 
@@ -337,9 +351,9 @@ Se puede ingresar a ActiveMQ usando usuario y password ADMIN.
 
 https://192.168.99.100:8083/console/
 
-image:extracted-media/media/image51.png[image,width=355,height=250]
+image:extracted-media/media/image54.png[image,width=355,height=250]
 
-image:extracted-media/media/image52.png[image,width=540,height=381]
+image:extracted-media/media/image55.png[image,width=540,height=381]
 
 Las credenciales son las siguientes:
 
@@ -347,4 +361,4 @@ Las credenciales son las siguientes:
 
 *Password* 8FAc58d7D71944C098CE95528e8948A3
 
-image:extracted-media/media/image53.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbe30e27.PNG,width=403,height=283]
+image:extracted-media/media/image56.png[C:\Users\jgodi\AppData\Local\Temp\SNAGHTMLbe30e27.PNG,width=403,height=283]
