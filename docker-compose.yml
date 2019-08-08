@@ -11,6 +11,7 @@ services:
       dragon_shopify_smtp_email_from: ${dragon_shopify_smtp_email_from}
       dragon_shopify_smtp_email_to: ${dragon_shopify_smtp_email_to} 
       dragon_shopify_smtp_email_errorSubject: ${dragon_shopify_smtp_email_errorSubject}
+      dragon_shopify_smtp_email_msgSubject: ${dragon_shopify_smtp_email_msgSubject}
       Dragon_URL_Base: ${Dragon_URL_Base}
       Dragon_Conf_Cliente: ${Dragon_Conf_Cliente}
       Dragon_Clave_Privada_Conf_Cliente: ${Dragon_Clave_Privada_Conf_Cliente}
@@ -28,6 +29,7 @@ services:
       cron_status: ${cron_status}
       authentication_user_name: ${authentication_user_name}
       authentication_user_password: ${authentication_user_password}
+      mirritVersion: ${mirritVersion}
     container_name: mule-server
     depends_on:
      - graphite
