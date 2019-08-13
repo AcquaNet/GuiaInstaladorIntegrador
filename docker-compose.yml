@@ -2,6 +2,7 @@ version: '2'
 
 services:
   mule-server:
+    build: docker_mulesoft
     image: soporteacqua/mule-server:1.0.0
     environment:
       dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
@@ -32,8 +33,9 @@ services:
       mirritVersion: ${mirritVersion}
     container_name: mule-server
     depends_on:
-     - graphite
+     - graphite-server
      - swagger-server
+     - ngrok-server
     ports:
      - "8083:8083"
      - "61616:61616"
@@ -43,13 +45,14 @@ services:
      - /tmp/docker/mule-server/apps:/opt/mule/mule-standalone-390/apps
     links:
      - swagger-server:swagger-server
-     - graphite:graphite
+     - graphite-server:graphite-server
     user: root
     networks:
       integradornet:
         ipv4_address: 172.25.0.5
     
   swagger-server:
+    build: docker_swaggerserver
     image: soporteacqua/swagger-server:1.0.0
     environment:
       SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
@@ -66,7 +69,7 @@ services:
         ipv4_address: 172.25.0.4
     restart: always 
     
-  graphite:
+  graphite-server:
     image: kamon/grafana_graphite
     ports:
       - "2003:2003"
@@ -75,11 +78,40 @@ services:
       - "8081:81"
       - "8125:8125"
       - "8126:8126"
+    container_name: graphite-server
     user: root
     networks:
       integradornet:
         ipv4_address: 172.25.0.3
     restart: always
+ 
+  ngrok-server:
+    build: docker_ngrok
+    image: soporteacqua/ngrok-server:1.0.0
+    environment:
+      NGROK_NGROK_TOKEN: ${NGROK_NGROK_TOKEN}
+      NGROK_TARGET_HOST: ${NGROK_TARGET_HOST}
+      NGROK_TARGET_PORT: ${NGROK_TARGET_PORT}
+    ports:
+      - "4040:4040"
+    container_name: ngrok-server
+    networks:
+      integradornet:
+        ipv4_address: 172.25.0.2
+      
+  html-server:
+    build: docker_html_server
+    image: soporteacqua/html-server:1.0.0
+    environment:
+      HTML_SERVER_IP: ${HTML_SERVER_IP}
+    ports:
+      - "80:80"
+    container_name: html-server
+    user: root
+    networks:
+      integradornet:
+        ipv4_address: 172.25.0.6
+    restart: always          
     
 networks:
   integradornet:
