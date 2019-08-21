@@ -1,13 +1,13 @@
 = MirrIt™ Notas del Producto
-:keywords: JDE, JDEdwards, EnterpriseOne, Oracle, JD Edwards
+:keywords: Zoologic DragonFish Shopify
 
 El sistema de integración de MirrIt facilita la integración entre DragonFish y diferente E-Commerces.
 
-link:/http://modusintegration.github.io/mule-connector-JDE/[JDE Connector user guide].
+link: 
 
-== JD Edwards™ Connector 2.0.0 - June 20, 2019
+== MirrIt™ Conector 1.0.0 - 21 de Agosto del 2019
 
-=== Version 2.0.0 Compatibility
+=== Version 1.0.0 Compatibilidad
 
 [width="100%", cols=",", options="header"]
 |===
@@ -20,29 +20,18 @@ link:/http://modusintegration.github.io/mule-connector-JDE/[JDE Connector user g
 
 === Features
 
-* Log into _JD Edwards EnterpriseOne™_. Authentication over _EnterpriseOne Security Server_.
-* Discover BSFNs by name.
-* Resolve BSFN metadata (signature and parameters) at runtime.
-* Cache BSFN & UBE definitions locally in xml format.
-* Invoke a Business Function (BSFN) on the server by passing it parameters.
-* Invoke a Business Function (BSFN) on the server using Transaction Processing.
-* Invoke a UBE by name / version. It allows use of data selection using SQL syntax
-* Check for UBEs status
-* Poll MBF Events.
-* Poll EDI Events.
-* Log out.
+* Permite la sincronización de artículos desde DragonFish hacia 
+* 
 
-=== Version 2.0.0 Fixed in this Release
+=== Version 1.0.0 Arreglos en este Release
 
-None
+N/A
 
-=== Version 2.0.0 Known Issues
+=== Version 1.0.0 Issues conocidos
 
-None
+N/A
 
-=== Support Resources
-* For more information on the PortX JD Edwards Connector for Mule 4 - User Guide, visit its link:http://modusbox-docs.s3-website-us-west-2.amazonaws.com/jde-docs/jde/latest/demo_getting_started.html#requirements[User Guide].
-* link:http://training.mulesoft.com[MuleSoft Training]
-* link:https://www.mulesoft.com/webinars[MuleSoft Webinars]
-* link:http://blogs.mulesoft.com[MuleSoft Blogs]
-* link:http://forums.mulesoft.com[MuleSoft Forums]
+=== Soporte
+* Para mayor detalle acceder a la guia de Usuario link:https://github.com/AcquaNet/GuiaInstaladorIntegrador/blob/master/guia_instalacion.adoc[User Guide].
+* link:https://acquait.atlassian.net/servicedesk/customer/portals[Soporte]
+
