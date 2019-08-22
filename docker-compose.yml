@@ -25,11 +25,15 @@ services:
       Shopify_API_Key: ${Shopify_API_Key}   
       Shopify_API_Password: ${Shopify_API_Password}   
       Shopify_Webhooks_url: ${Shopify_Webhooks_url}   
-      Shopify_Webhooks_topics: ${Shopify_Webhooks_topics} 
+      Shopify_Webhooks_topics: ${Shopify_Webhooks_topics}
       cron_status: ${cron_status}
       authentication_user_name: ${authentication_user_name}
       authentication_user_password: ${authentication_user_password}
       mirritVersion: ${mirritVersion}
+      NGROK_SERVER_IP: ${NGROK_SERVER_IP}
+      metrics_graphite_enable: ${metrics_graphite_enable}
+      metrics_graphite_server: ${metrics_graphite_server}
+      metrics_graphite_port: ${metrics_graphite_port}
     container_name: mule-server
     depends_on:
      - graphite-server
@@ -87,8 +91,8 @@ services:
     image: soporteacqua/ngrok-server:1.0.0
     environment:
       NGROK_NGROK_TOKEN: ${NGROK_NGROK_TOKEN}
-      NGROK_TARGET_HOST: ${NGROK_TARGET_HOST}
-      NGROK_TARGET_PORT: ${NGROK_TARGET_PORT}
+      NGROK_MULE_SERVER_HOST: ${NGROK_MULE_SERVER_HOST}
+      NGROK_MULE_SERVER_PORT: ${NGROK_MULE_SERVER_PORT}
     ports:
       - "4040:4040"
     container_name: ngrok-server
