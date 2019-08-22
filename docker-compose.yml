@@ -112,7 +112,7 @@ services:
       integradornet:
         ipv4_address: 172.25.0.6
     restart: always          
-    
+
 networks:
   integradornet:
     driver: bridge
