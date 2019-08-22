@@ -31,9 +31,9 @@ services:
       authentication_user_password: ${authentication_user_password}
       mirritVersion: ${mirritVersion}
       NGROK_SERVER_IP: ${NGROK_SERVER_IP}
-      metrics_graphite_enable: ${metrics_graphite_enable}
-      metrics_graphite_server: ${metrics_graphite_server}
       metrics_graphite_port: ${metrics_graphite_port}
+      metrics_graphite_enable: ${metrics_graphite_enable}
+      metrics_graphite_server: ${metrics_graphite_server}      
     container_name: mule-server
     depends_on:
      - graphite-server
