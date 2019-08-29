@@ -2,7 +2,6 @@ version: '2'
 
 services:
   mule-server:
-    build: ../docker_mulesoft
     image: soporteacqua/mule-server:1.0.1
     environment:
       dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
@@ -54,7 +53,6 @@ services:
         ipv4_address: 172.25.0.5
     
   swagger-server:
-    build: ../docker_swaggerserver
     image: soporteacqua/swagger-server:1.0.1
     environment:
       SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
@@ -90,7 +88,6 @@ services:
     restart: always
        
   html-server:
-    build: ../docker_html_server
     image: soporteacqua/html-server:1.0.1
     environment:
       HTML_SERVER_IP: ${HTML_SERVER_IP}
