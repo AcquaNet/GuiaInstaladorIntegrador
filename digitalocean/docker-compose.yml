@@ -1,0 +1,112 @@
+version: '2'
+
+services:
+  mule-server:
+    build: ../docker_mulesoft
+    image: soporteacqua/mule-server:1.0.1
+    environment:
+      dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
+      dragon_shopify_smtp_port: ${dragon_shopify_smtp_port}
+      dragon_shopify_smtp_user: ${dragon_shopify_smtp_user}
+      dragon_shopify_smtp_pass: ${dragon_shopify_smtp_pass}
+      dragon_shopify_smtp_email_from: ${dragon_shopify_smtp_email_from}
+      dragon_shopify_smtp_email_to: ${dragon_shopify_smtp_email_to} 
+      dragon_shopify_smtp_email_errorSubject: ${dragon_shopify_smtp_email_errorSubject}
+      dragon_shopify_smtp_email_msgSubject: ${dragon_shopify_smtp_email_msgSubject}
+      Dragon_URL_Base: ${Dragon_URL_Base}
+      Dragon_Conf_Cliente: ${Dragon_Conf_Cliente}
+      Dragon_Clave_Privada_Conf_Cliente: ${Dragon_Clave_Privada_Conf_Cliente}
+      Dragon_User: ${Dragon_User}
+      Dragon_Password: ${Dragon_Password}
+      Dragon_Lista_De_Precios: ${Dragon_Lista_De_Precios}
+      Dragon_FechaUltimaActualizacion: ${Dragon_FechaUltimaActualizacion}
+      Shopify_API_Host: ${Shopify_API_Host}
+      Shopify_API_Port: ${Shopify_API_Port}
+      Shopify_API_BasePath: ${Shopify_API_BasePath}  
+      Shopify_API_Key: ${Shopify_API_Key}   
+      Shopify_API_Password: ${Shopify_API_Password}   
+      Shopify_Webhooks_url: ${Shopify_Webhooks_url}   
+      Shopify_Webhooks_topics: ${Shopify_Webhooks_topics}
+      cron_status: ${cron_status}
+      authentication_user_name: ${authentication_user_name}
+      authentication_user_password: ${authentication_user_password}
+      mirritVersion: ${mirritVersion}
+      metrics_graphite_enable: ${metrics_graphite_enable}
+      metrics_graphite_server: ${metrics_graphite_server}
+      metrics_graphite_port: ${metrics_graphite_port}
+      Dragon_Servidor_Servicio: ${Dragon_Servidor_Servicio}
+      Dragon_Puerto_Servicio: ${Dragon_Puerto_Servicio}
+    container_name: mule-server
+    depends_on:
+     - graphite-server
+     - swagger-server 
+    ports:
+     - "8083:8083"
+    volumes:
+     - /tmp/docker/mule-server/logs:/opt/mule/mule-standalone-390/logs
+     - /tmp/docker/mule-server/apps:/opt/mule/mule-standalone-390/apps
+    links:
+     - swagger-server:swagger-server
+     - graphite-server:graphite-server
+    user: root
+    networks:
+      integradornet:
+        ipv4_address: 172.25.0.5
+    
+  swagger-server:
+    build: ../docker_swaggerserver
+    image: soporteacqua/swagger-server:1.0.1
+    environment:
+      SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
+      SWAGGER_SERVER_LICENCIA_VTO: ${SWAGGER_SERVER_LICENCIA_VTO}  
+      SWAGGER_SERVER_LICENCE_KEY: ${SWAGGER_SERVER_LICENCE_KEY}
+      Dragon_Servidor_Servicio: ${Dragon_Servidor_Servicio}
+      Dragon_Puerto_Servicio: ${Dragon_Puerto_Servicio}
+    container_name: swagger-server
+    ports:
+     - "${Dragon_Puerto_Servicio}:${Dragon_Puerto_Servicio}"
+    volumes:
+     - /tmp/docker/swaggerserver/logs:/var/swaggerserver/logs
+    user: root
+    networks:
+      integradornet:
+        ipv4_address: 172.25.0.4
+    restart: always 
+    
+  graphite-server:
+    image: kamon/grafana_graphite
+    ports:
+      - "2003:2003"
+      - "2004:2004"
+      - "8080:80"
+      - "8081:81"
+      - "8125:8125"
+      - "8126:8126"
+    container_name: graphite-server
+    user: root
+    networks:
+      integradornet:
+        ipv4_address: 172.25.0.3
+    restart: always
+       
+  html-server:
+    build: ../docker_html_server
+    image: soporteacqua/html-server:1.0.1
+    environment:
+      HTML_SERVER_IP: ${HTML_SERVER_IP}
+    ports:
+      - "80:80"
+    container_name: html-server
+    user: root
+    networks:
+      integradornet:
+        ipv4_address: 172.25.0.6
+    restart: always          
+    
+networks:
+  integradornet:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.25.0.0/16
+         gateway: 172.25.0.1
