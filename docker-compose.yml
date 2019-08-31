@@ -2,7 +2,7 @@ version: '2'
 
 services:
   mule-server:
-    image: soporteacqua/mule-server:1.0.0
+    image: soporteacqua/mule-server:1.0.1
     environment:
       dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
       dragon_shopify_smtp_port: ${dragon_shopify_smtp_port}
@@ -30,19 +30,17 @@ services:
       authentication_user_name: ${authentication_user_name}
       authentication_user_password: ${authentication_user_password}
       mirritVersion: ${mirritVersion}
-      NGROK_SERVER_IP: ${NGROK_SERVER_IP}
-      metrics_graphite_port: ${metrics_graphite_port}
       metrics_graphite_enable: ${metrics_graphite_enable}
-      metrics_graphite_server: ${metrics_graphite_server}      
+      metrics_graphite_server: ${metrics_graphite_server}
+      metrics_graphite_port: ${metrics_graphite_port}
+      Dragon_Servidor_Servicio: ${Dragon_Servidor_Servicio}
+      Dragon_Puerto_Servicio: ${Dragon_Puerto_Servicio}
     container_name: mule-server
     depends_on:
      - graphite-server
-     - swagger-server
-     - ngrok-server
+     - swagger-server 
     ports:
      - "8083:8083"
-     - "61616:61616"
-     - "8161:8161"
     volumes:
      - /tmp/docker/mule-server/logs:/opt/mule/mule-standalone-390/logs
      - /tmp/docker/mule-server/apps:/opt/mule/mule-standalone-390/apps
@@ -55,14 +53,16 @@ services:
         ipv4_address: 172.25.0.5
     
   swagger-server:
-    image: soporteacqua/swagger-server:1.0.0
+    image: soporteacqua/swagger-server:1.0.1
     environment:
       SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
       SWAGGER_SERVER_LICENCIA_VTO: ${SWAGGER_SERVER_LICENCIA_VTO}  
       SWAGGER_SERVER_LICENCE_KEY: ${SWAGGER_SERVER_LICENCE_KEY}
+      Dragon_Servidor_Servicio: ${Dragon_Servidor_Servicio}
+      Dragon_Puerto_Servicio: ${Dragon_Puerto_Servicio}
     container_name: swagger-server
     ports:
-     - "8085:8085"
+     - "${Dragon_Puerto_Servicio}:${Dragon_Puerto_Servicio}"
     volumes:
      - /tmp/docker/swaggerserver/logs:/var/swaggerserver/logs
     user: root
@@ -86,24 +86,20 @@ services:
       integradornet:
         ipv4_address: 172.25.0.3
     restart: always
- 
-  ngrok-server:
-    image: soporteacqua/ngrok-server:1.0.0
-    environment:
-      NGROK_NGROK_TOKEN: ${NGROK_NGROK_TOKEN}
-      NGROK_MULE_SERVER_HOST: ${NGROK_MULE_SERVER_HOST}
-      NGROK_MULE_SERVER_PORT: ${NGROK_MULE_SERVER_PORT}
-    ports:
-      - "4040:4040"
-    container_name: ngrok-server
-    networks:
-      integradornet:
-        ipv4_address: 172.25.0.2
-      
+       
   html-server:
-    image: soporteacqua/html-server:1.0.0
+    image: soporteacqua/html-server:1.0.1
     environment:
-      HTML_SERVER_IP: ${HTML_SERVER_IP}
+      URL_SHOPIFY: ${URL_SHOPIFY}
+      NAME_SHOPIFY: ${NAME_SHOPIFY}
+      URL_SHOPIFY_ADMIN: ${URL_SHOPIFY_ADMIN}
+      NAME_SHOPIFY_ADMIN: ${NAME_SHOPIFY_ADMIN}
+      URL_MULE_CONSOLE: ${URL_MULE_CONSOLE}
+      NAME_MULE_CONSOLE: ${NAME_MULE_CONSOLE}
+      URL_METRICS_CONSOLE: ${URL_METRICS_CONSOLE}
+      NAME_METRICS_CONSOLE: ${NAME_METRICS_CONSOLE}
+      URL_SEC_CONSOLE: ${URL_SEC_CONSOLE}
+      NAME_SEC_CONSOLE: ${NAME_SEC_CONSOLE}
     ports:
       - "80:80"
     container_name: html-server
@@ -112,7 +108,7 @@ services:
       integradornet:
         ipv4_address: 172.25.0.6
     restart: always          
-
+    
 networks:
   integradornet:
     driver: bridge
