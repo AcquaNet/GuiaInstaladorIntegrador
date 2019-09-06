@@ -37,6 +37,12 @@ services:
       Dragon_Servidor_Servicio: ${Dragon_Servidor_Servicio}
       Dragon_Puerto_Servicio: ${Dragon_Puerto_Servicio}
       Dragon_Sleep_Btw_products_milliseconds: ${Dragon_Sleep_Btw_products_milliseconds}
+      shopify_generar_csv: ${shopify_generar_csv}
+      shopify_generar_csv_image_url_protocolo: ${shopify_generar_csv_image_url_protocolo}
+      shopify_generar_csv_image_url_prefix: ${shopify_generar_csv_image_url_prefix}
+      shopify_generar_csv_image_url_sufix: ${shopify_generar_csv_image_url_sufix}
+      Dragon_Imagenes_Prefijo: ${Dragon_Imagenes_Prefijo}
+      Dragon_Imagenes_Sufijo: ${Dragon_Imagenes_Sufijo}
     container_name: mule-server
     depends_on:
      - graphite-server
