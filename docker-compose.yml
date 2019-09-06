@@ -49,6 +49,7 @@ services:
      - swagger-server 
     ports:
      - "8083:8083"
+     - "8161:8161"
     volumes:
      - /tmp/docker/mule-server/logs:/opt/mule/mule-standalone-390/logs
      - /tmp/docker/mule-server/apps:/opt/mule/mule-standalone-390/apps
