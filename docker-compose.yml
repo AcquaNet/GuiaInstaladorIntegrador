@@ -44,7 +44,7 @@ services:
       Dragon_Imagenes_Prefijo: ${Dragon_Imagenes_Prefijo}
       Dragon_Imagenes_Sufijo: ${Dragon_Imagenes_Sufijo}
     container_name: mule-server
-    depends_on:
+    depends_on: 
      - graphite-server
      - swagger-server
     ports:
