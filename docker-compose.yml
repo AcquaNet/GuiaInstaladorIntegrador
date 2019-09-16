@@ -60,6 +60,7 @@ services:
     links:
      - swagger-server:swagger-server
      - graphite-server:graphite-server
+     - ngrok-server:ngrok-server
     user: root
     networks:
       integradornet:
