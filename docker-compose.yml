@@ -2,7 +2,7 @@ version: '2'
 
 services:
   mule-server:
-    image: soporteacqua/mule-server:1.0.1
+    image: soporteacqua/mule-server:1.0.2
     environment:
       dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
       dragon_shopify_smtp_port: ${dragon_shopify_smtp_port}
@@ -23,9 +23,11 @@ services:
       Shopify_API_Port: ${Shopify_API_Port}
       Shopify_API_BasePath: ${Shopify_API_BasePath}  
       Shopify_API_Key: ${Shopify_API_Key}   
-      Shopify_API_Password: ${Shopify_API_Password}   
+      Shopify_API_Password: ${Shopify_API_Password}  
+      Shopify_Webhooks_protocolo: ${Shopify_Webhooks_protocolo}
       Shopify_Webhooks_url: ${Shopify_Webhooks_url}   
       Shopify_Webhooks_topics: ${Shopify_Webhooks_topics}
+      Shopify_ngrok_server_ip: ${Shopify_ngrok_server_ip}
       cron_status: ${cron_status}
       cron_articulos: ${cron_articulos}
       authentication_user_name: ${authentication_user_name}
@@ -44,9 +46,10 @@ services:
       Dragon_Imagenes_Prefijo: ${Dragon_Imagenes_Prefijo}
       Dragon_Imagenes_Sufijo: ${Dragon_Imagenes_Sufijo}
     container_name: mule-server
-    depends_on: 
+    depends_on:
      - graphite-server
-     - swagger-server
+     - swagger-server 
+     - ngrok-server
     ports:
      - "8083:8083"
      - "8088:8081"
@@ -63,7 +66,7 @@ services:
         ipv4_address: 172.25.0.5
     
   swagger-server:
-    image: soporteacqua/swagger-server:1.0.1
+    image: soporteacqua/swagger-server:1.0.2
     environment:
       SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
       SWAGGER_SERVER_LICENCIA_VTO: ${SWAGGER_SERVER_LICENCIA_VTO}  
@@ -98,7 +101,7 @@ services:
     restart: always
        
   html-server:
-    image: soporteacqua/html-server:1.0.1
+    image: soporteacqua/html-server:1.0.2
     environment:
       PROTO_SHOPIFY: ${PROTO_SHOPIFY}
       URL_SHOPIFY: ${URL_SHOPIFY}
@@ -122,7 +125,20 @@ services:
     networks:
       integradornet:
         ipv4_address: 172.25.0.6
-    restart: always          
+    restart: always    
+
+  ngrok-server:
+    image: soporteacqua/ngrok-server:1.0.2
+    environment:
+      NGROK_NGROK_TOKEN: ${NGROK_NGROK_TOKEN}
+      NGROK_MULE_SERVER_HOST: ${NGROK_MULE_SERVER_HOST}
+      NGROK_MULE_SERVER_PORT: ${NGROK_MULE_SERVER_PORT}
+    ports:
+      - "4040:4040"
+    container_name: ngrok-server
+    networks:
+      integradornet:
+        ipv4_address: 172.25.0.2    
     
 networks:
   integradornet:
