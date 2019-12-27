@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  mule-server:
+  mule-server: 
     image: soporteacqua/mule-server:1.0.2
     environment:
       dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
@@ -66,7 +66,7 @@ services:
       integradornet:
         ipv4_address: 172.25.0.5
     
-  swagger-server:
+  swagger-server: 
     image: soporteacqua/swagger-server:1.0.2
     environment:
       SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
@@ -101,8 +101,8 @@ services:
         ipv4_address: 172.25.0.3
     restart: always
        
-  html-server:
-    image: soporteacqua/html-server:1.0.2
+  html-server: 
+    image: soporteacqua/html-server:1.0.2   
     environment:
       PROTO_SHOPIFY: ${PROTO_SHOPIFY}
       URL_SHOPIFY: ${URL_SHOPIFY}
