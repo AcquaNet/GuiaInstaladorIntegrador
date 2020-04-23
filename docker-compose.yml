@@ -19,7 +19,7 @@ services:
       Dragon_User: ${Dragon_User}
       Dragon_Password: ${Dragon_Password}
       Dragon_Lista_De_Precios: ${Dragon_Lista_De_Precios}
-      Dragon_Lista_De_Precios_Descuentos: ${Dragon_Lista_De_Precios_Descuentos}
+      Dragon_Lista_De_Precios_Descuento: ${Dragon_Lista_De_Precios_Descuento}
       Dragon_FechaUltimaActualizacion: ${Dragon_FechaUltimaActualizacion}
       Shopify_API_Host: ${Shopify_API_Host}
       Shopify_API_Port: ${Shopify_API_Port}
@@ -60,6 +60,7 @@ services:
       shopify_generar_csv_image_url_sufix: ${shopify_generar_csv_image_url_sufix}
       Dragon_Imagenes_Prefijo: ${Dragon_Imagenes_Prefijo}
       Dragon_Imagenes_Sufijo: ${Dragon_Imagenes_Sufijo}
+      NGROK_SLEEP: ${NGROK_SLEEP}
     container_name: mule-server
     depends_on:
      - graphite-server
