@@ -37,7 +37,7 @@ services:
       Woo_API_Backend: ${Woo_API_Backend}
       Woo_API_Key: ${Woo_API_Key}
       Woo_API_Password: ${Woo_API_Password}
-      Woo_API_Timeout=: ${Woo_API_Timeout}
+      Woo_API_Timeout: ${Woo_API_Timeout}
       Woo_API_Username: ${Woo_API_Username}
       Woo_API_Pass: ${Woo_API_Pass}
       Woo_Webhooks_protocolo: ${Woo_Webhooks_protocolo}
