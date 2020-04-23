@@ -1,9 +1,10 @@
 version: '2'
 
 services:
-  mule-server: 
-    image: soporteacqua/mule-server:1.0.2
+  mule-server:
+    image: soporteacqua/mule-server:1.0.4
     environment:
+      e_commerces: ${e_commerces}
       dragon_shopify_smtp_host: ${dragon_shopify_smtp_host}
       dragon_shopify_smtp_port: ${dragon_shopify_smtp_port}
       dragon_shopify_smtp_user: ${dragon_shopify_smtp_user}
@@ -18,6 +19,7 @@ services:
       Dragon_User: ${Dragon_User}
       Dragon_Password: ${Dragon_Password}
       Dragon_Lista_De_Precios: ${Dragon_Lista_De_Precios}
+      Dragon_Lista_De_Precios_Descuentos: ${Dragon_Lista_De_Precios_Descuentos}
       Dragon_FechaUltimaActualizacion: ${Dragon_FechaUltimaActualizacion}
       Shopify_API_Host: ${Shopify_API_Host}
       Shopify_API_Port: ${Shopify_API_Port}
@@ -28,6 +30,19 @@ services:
       Shopify_Webhooks_url: ${Shopify_Webhooks_url}   
       Shopify_Webhooks_topics: ${Shopify_Webhooks_topics}
       Shopify_ngrok_server_ip: ${Shopify_ngrok_server_ip}
+      Woo_API_Host: ${Woo_API_Host}
+      Woo_API_Port: ${Woo_API_Port}
+      Woo_API_BasePath: ${Woo_API_BasePath}
+      Woo_API_BasePath_Media: ${Woo_API_BasePath_Media}
+      Woo_API_Backend: ${Woo_API_Backend}
+      Woo_API_Key: ${Woo_API_Key}
+      Woo_API_Password: ${Woo_API_Password}
+      Woo_API_Timeout=: ${Woo_API_Timeout}
+      Woo_API_Username: ${Woo_API_Username}
+      Woo_API_Pass: ${Woo_API_Pass}
+      Woo_Webhooks_protocolo: ${Woo_Webhooks_protocolo}
+      Woo_Webhooks_url: ${Woo_Webhooks_url}
+      Woo_Webhooks_topics: ${Woo_Webhooks_topics}
       cron_status: ${cron_status}
       cron_articulos: ${cron_articulos}
       authentication_user_name: ${authentication_user_name}
@@ -64,10 +79,10 @@ services:
     user: root
     networks:
       integradornet:
-        ipv4_address: 172.25.0.5
+        ipv4_address: 172.27.0.5
     
-  swagger-server: 
-    image: soporteacqua/swagger-server:1.0.2
+  swagger-server:
+    image: soporteacqua/swagger-server:1.0.4
     environment:
       SWAGGER_SERVER_LICENCE_CLIENTE: ${SWAGGER_SERVER_LICENCE_CLIENTE}
       SWAGGER_SERVER_LICENCIA_VTO: ${SWAGGER_SERVER_LICENCIA_VTO}  
@@ -82,7 +97,7 @@ services:
     user: root
     networks:
       integradornet:
-        ipv4_address: 172.25.0.4
+        ipv4_address: 172.27.0.4
     restart: always 
     
   graphite-server:
@@ -98,11 +113,11 @@ services:
     user: root
     networks:
       integradornet:
-        ipv4_address: 172.25.0.3
+        ipv4_address: 172.27.0.3
     restart: always
        
-  html-server: 
-    image: soporteacqua/html-server:1.0.2   
+  html-server:
+    image: soporteacqua/html-server:1.0.4   
     environment:
       PROTO_SHOPIFY: ${PROTO_SHOPIFY}
       URL_SHOPIFY: ${URL_SHOPIFY}
@@ -125,11 +140,11 @@ services:
     user: root
     networks:
       integradornet:
-        ipv4_address: 172.25.0.6
+        ipv4_address: 172.27.0.6
     restart: always    
 
   ngrok-server:
-    image: soporteacqua/ngrok-server:1.0.2
+    image: soporteacqua/ngrok-server:1.0.4
     environment:
       NGROK_NGROK_TOKEN: ${NGROK_NGROK_TOKEN}
       NGROK_MULE_SERVER_HOST: ${NGROK_MULE_SERVER_HOST}
@@ -139,12 +154,12 @@ services:
     container_name: ngrok-server
     networks:
       integradornet:
-        ipv4_address: 172.25.0.2    
+        ipv4_address: 172.27.0.2    
     
 networks:
   integradornet:
     driver: bridge
     ipam:
      config:
-       - subnet: 172.25.0.0/16
-         gateway: 172.25.0.1
+       - subnet: 172.27.0.0/16
+         gateway: 172.27.0.1
