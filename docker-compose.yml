@@ -70,6 +70,7 @@ services:
      - "8083:8083"
      - "8088:8081"
      - "8161:8161"
+     - "443:8083"
     volumes:
      - /tmp/docker/mule-server/logs:/opt/mule/mule-standalone-390/logs
      - /tmp/docker/mule-server/apps:/opt/mule/mule-standalone-390/apps
