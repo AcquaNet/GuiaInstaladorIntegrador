@@ -1,5 +1,8 @@
 version: '2'
 
+volumes:
+  web_data:  
+  
 services:
   mule-server:
     image: soporteacqua/mule-server:1.0.4
@@ -19,7 +22,7 @@ services:
       Dragon_User: ${Dragon_User}
       Dragon_Password: ${Dragon_Password}
       Dragon_Lista_De_Precios: ${Dragon_Lista_De_Precios}
-      Dragon_Lista_De_Precios_Descuento: ${Dragon_Lista_De_Precios_Descuento}
+      Dragon_Lista_De_Precios_Descuento: ${Dragon_Lista_De_Precios_Descuentos}
       Dragon_FechaUltimaActualizacion: ${Dragon_FechaUltimaActualizacion}
       Shopify_API_Host: ${Shopify_API_Host}
       Shopify_API_Port: ${Shopify_API_Port}
@@ -29,7 +32,6 @@ services:
       Shopify_Webhooks_protocolo: ${Shopify_Webhooks_protocolo}
       Shopify_Webhooks_url: ${Shopify_Webhooks_url}   
       Shopify_Webhooks_topics: ${Shopify_Webhooks_topics}
-      Shopify_ngrok_server_ip: ${Shopify_ngrok_server_ip}
       Woo_API_Host: ${Woo_API_Host}
       Woo_API_Port: ${Woo_API_Port}
       Woo_API_BasePath: ${Woo_API_BasePath}
@@ -58,26 +60,17 @@ services:
       shopify_generar_csv_image_url_protocolo: ${shopify_generar_csv_image_url_protocolo}
       shopify_generar_csv_image_url_prefix: ${shopify_generar_csv_image_url_prefix}
       shopify_generar_csv_image_url_sufix: ${shopify_generar_csv_image_url_sufix}
-      Dragon_Imagenes_Prefijo: ${Dragon_Imagenes_Prefijo}
-      Dragon_Imagenes_Sufijo: ${Dragon_Imagenes_Sufijo}
-      NGROK_SLEEP: ${NGROK_SLEEP}
     container_name: mule-server
     depends_on:
      - graphite-server
-     - swagger-server 
-     - ngrok-server
+     - swagger-server
     ports:
      - "8083:8083"
      - "8088:8081"
      - "8161:8161"
-     - "444:8083"
-    volumes:
-     - /tmp/docker/mule-server/logs:/opt/mule/mule-standalone-390/logs
-     - /tmp/docker/mule-server/apps:/opt/mule/mule-standalone-390/apps
     links:
      - swagger-server:swagger-server
      - graphite-server:graphite-server
-     - ngrok-server:ngrok-server
     user: root
     networks:
       integradornet:
@@ -94,8 +87,6 @@ services:
     container_name: swagger-server
     ports:
      - "${Dragon_Puerto_Servicio}:${Dragon_Puerto_Servicio}"
-    volumes:
-     - /tmp/docker/swaggerserver/logs:/var/swaggerserver/logs
     user: root
     networks:
       integradornet:
@@ -117,7 +108,20 @@ services:
       integradornet:
         ipv4_address: 172.27.0.3
     restart: always
-       
+    
+  theia-server:
+    image: theiaide/theia
+    ports:
+      - "3000:3000"
+    container_name: theia-server
+    volumes: 
+      - /tmp/GuiaInstaladorIntegrador:/home/project
+    user: root
+    networks:
+      integradornet:
+        ipv4_address: 172.27.0.2
+    restart: always
+    
   html-server:
     image: soporteacqua/html-server:1.0.4   
     environment:
@@ -143,20 +147,7 @@ services:
     networks:
       integradornet:
         ipv4_address: 172.27.0.6
-    restart: always    
-
-  ngrok-server:
-    image: soporteacqua/ngrok-server:1.0.4
-    environment:
-      NGROK_NGROK_TOKEN: ${NGROK_NGROK_TOKEN}
-      NGROK_MULE_SERVER_HOST: ${NGROK_MULE_SERVER_HOST}
-      NGROK_MULE_SERVER_PORT: ${NGROK_MULE_SERVER_PORT}
-    ports:
-      - "4040:4040"
-    container_name: ngrok-server
-    networks:
-      integradornet:
-        ipv4_address: 172.27.0.2    
+    restart: always  
     
 networks:
   integradornet:
