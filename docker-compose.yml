@@ -1,8 +1,5 @@
 version: '2'
 
-volumes:
-  web_data:  
-  
 services:
   mule-server:
     image: soporteacqua/mule-server:1.0.4
@@ -22,7 +19,7 @@ services:
       Dragon_User: ${Dragon_User}
       Dragon_Password: ${Dragon_Password}
       Dragon_Lista_De_Precios: ${Dragon_Lista_De_Precios}
-      Dragon_Lista_De_Precios_Descuento: ${Dragon_Lista_De_Precios_Descuentos}
+      Dragon_Lista_De_Precios_Descuento: ${Dragon_Lista_De_Precios_Descuento}
       Dragon_FechaUltimaActualizacion: ${Dragon_FechaUltimaActualizacion}
       Shopify_API_Host: ${Shopify_API_Host}
       Shopify_API_Port: ${Shopify_API_Port}
@@ -110,12 +107,12 @@ services:
     restart: always
     
   theia-server:
-    image: theiaide/theia
+    image: theiaide/theia-https
     ports:
-      - "3000:3000"
+      - "10443:10443"
     container_name: theia-server
     volumes: 
-      - /tmp/GuiaInstaladorIntegrador:/home/project
+      - .:/home/project
     user: root
     networks:
       integradornet:
