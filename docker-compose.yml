@@ -29,6 +29,7 @@ services:
       Shopify_Webhooks_protocolo: ${Shopify_Webhooks_protocolo}
       Shopify_Webhooks_url: ${Shopify_Webhooks_url}   
       Shopify_Webhooks_topics: ${Shopify_Webhooks_topics}
+      Shopify_ngrok_server_ip: ${Shopify_ngrok_server_ip}
       Woo_API_Host: ${Woo_API_Host}
       Woo_API_Port: ${Woo_API_Port}
       Woo_API_BasePath: ${Woo_API_BasePath}
@@ -57,9 +58,11 @@ services:
       shopify_generar_csv_image_url_protocolo: ${shopify_generar_csv_image_url_protocolo}
       shopify_generar_csv_image_url_prefix: ${shopify_generar_csv_image_url_prefix}
       shopify_generar_csv_image_url_sufix: ${shopify_generar_csv_image_url_sufix}
+      NGROK_SLEEP: ${NGROK_SLEEP}
     container_name: mule-server
     depends_on:
      - graphite-server
+     - ngrok-server
      - swagger-server
     ports:
      - "8083:8083"
@@ -108,6 +111,8 @@ services:
     
   theia-server:
     image: theiaide/theia-https
+    environment:
+      token: ${theia_token}
     ports:
       - "10443:10443"
     container_name: theia-server
@@ -116,7 +121,7 @@ services:
     user: root
     networks:
       integradornet:
-        ipv4_address: 172.27.0.2
+        ipv4_address: 172.27.0.7
     restart: always
     
   html-server:
@@ -145,6 +150,20 @@ services:
       integradornet:
         ipv4_address: 172.27.0.6
     restart: always  
+    
+  ngrok-server:
+    image: soporteacqua/ngrok-server:1.0.4
+    environment:
+      NGROK_NGROK_TOKEN: ${NGROK_NGROK_TOKEN}
+      NGROK_MULE_SERVER_HOST: ${NGROK_MULE_SERVER_HOST}
+      NGROK_MULE_SERVER_PORT: ${NGROK_MULE_SERVER_PORT}
+    ports:
+      - "4040:4040"
+    container_name: ngrok-server
+    networks:
+      integradornet:
+        ipv4_address: 172.27.0.2    
+    restart: always      
     
 networks:
   integradornet:
