@@ -58,6 +58,14 @@ services:
       shopify_generar_csv_image_url_protocolo: ${shopify_generar_csv_image_url_protocolo}
       shopify_generar_csv_image_url_prefix: ${shopify_generar_csv_image_url_prefix}
       shopify_generar_csv_image_url_sufix: ${shopify_generar_csv_image_url_sufix}
+      shopify_generar_csv_image_update_images: ${shopify_generar_csv_image_update_images}
+      woo_generar_csv_image_url_protocolo: ${woo_generar_csv_image_url_protocolo}
+      woo_generar_csv_image_url_host: ${woo_generar_csv_image_url_host}
+      woo_generar_csv_image_url_port: ${woo_generar_csv_image_url_port}
+      woo_generar_csv_image_url_path: ${woo_generar_csv_image_url_path}
+      woo_generar_csv_image_url_sufix: ${woo_generar_csv_image_url_sufix}
+      woo_generar_csv_image_api_to_get_id_protocolo: ${woo_generar_csv_image_api_to_get_id_protocolo}
+      woo_generar_csv_image_api_to_get_id_path: ${woo_generar_csv_image_api_to_get_id_path}
       NGROK_SLEEP: ${NGROK_SLEEP}
     container_name: mule-server
     depends_on:
